@@ -1,0 +1,7 @@
+package fr.hoag;
+
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class Application {
+}
