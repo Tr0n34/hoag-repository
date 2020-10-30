@@ -11,7 +11,6 @@ import java.io.Serializable;
 public class PrimaryKey implements Serializable {
 
     @Column(name = "id")
-    @Convert(converter = EncryptionDataConverter.class)
     private Long id;
 
     @Override
