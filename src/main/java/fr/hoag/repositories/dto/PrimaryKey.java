@@ -2,7 +2,7 @@ package fr.hoag.repositories.dto;
 
 
 import com.google.common.base.Objects;
-import fr.hoag.repositories.encryptions.EncryptionConverter;
+import fr.hoag.repositories.encryptions.EncryptionDataConverter;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -11,7 +11,6 @@ import java.io.Serializable;
 public class PrimaryKey implements Serializable {
 
     @Column(name = "id")
-    @Convert(converter = EncryptionConverter.class)
     private Long id;
 
     @Override

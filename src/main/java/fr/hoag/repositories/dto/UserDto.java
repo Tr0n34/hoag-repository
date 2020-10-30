@@ -1,12 +1,12 @@
 package fr.hoag.repositories.dto;
 
 import com.google.common.base.Objects;
+import fr.hoag.repositories.encryptions.HashDataConverter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity(name = "User")
-@IdClass(PrimaryKey.class)
 @Table(name = "users", schema = "ft000")
 public class UserDto implements Serializable {
 
@@ -14,8 +14,8 @@ public class UserDto implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq-generator")
     @SequenceGenerator(name = "seq-generator", sequenceName = "ft000.seq-user", allocationSize=1)
     private Long id;
-
     private String login;
+    @Convert(converter = HashDataConverter.class)
     private String password;
     private String email;
 
