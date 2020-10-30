@@ -1,7 +1,19 @@
 package fr.hoag.services;
 
-import org.springframework.stereotype.Service;
+import fr.hoag.models.users.Profile;
+import fr.hoag.models.users.User;
+import fr.hoag.services.exceptions.BusinessServiceException;
 
-@Service
-public class UsersServices {
+public interface UsersServices {
+
+    public void subscribe(User user) throws BusinessServiceException;
+
+    public void unsubscribe(User user) throws BusinessServiceException;
+
+    public boolean checkPassword(String password) throws BusinessServiceException;
+
+    public boolean checkUser(User user) throws BusinessServiceException;
+
+    public User changeProfile(User user, Profile profile) throws BusinessServiceException;
+
 }

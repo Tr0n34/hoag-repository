@@ -1,4 +1,4 @@
-package fr.hoag.models;
+package fr.hoag.models.users;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;

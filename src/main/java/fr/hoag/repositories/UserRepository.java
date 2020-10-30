@@ -9,4 +9,6 @@ public interface UserRepository extends CrudRepository<UserDto, Long> {
 
     UserDto findByLoginAndPassword(String login, String password);
 
+    UserDto findByLogin(String login);
+
 }
