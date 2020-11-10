@@ -14,12 +14,12 @@ public class UsersServicesImpl implements UsersServices {
 
     @Autowired
     UserRepository userRepository;
-    
+
     UserValidator userValidator;
 
     @Override
     public void subscribe(User user) throws BusinessServiceException {
-        userRepository.findByLogin(user.getLogin());
+
     }
 
     @Override
