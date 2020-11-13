@@ -14,6 +14,7 @@ public class UserDto implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq-generator")
     @SequenceGenerator(name = "seq-generator", sequenceName = "ft000.seq-user", allocationSize=1)
     private Long id;
+    @Column(unique = true)
     private String login;
     @Convert(converter = HashDataConverter.class)
     private String password;

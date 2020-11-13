@@ -9,7 +9,7 @@ import org.springframework.test.context.ActiveProfiles;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ActiveProfiles("integration")
-public class DataConverterTestIntegration {
+public class DataConverterTest {
 
     @Test
     void should_encrypt_and_decrypt_password() {

@@ -1,18 +1,15 @@
 package fr.hoag.controllers;
 
-import org.assertj.core.api.Assertions;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.io.IOException;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.when;
 
 @SpringBootTest
 @ActiveProfiles("dev")
@@ -20,11 +17,6 @@ public class ConfigurationControllerTest {
 
     @MockBean
     private ConfigurationController configurationController;
-
-    @Test
-    public void contextLoads() {
-
-    }
 
     @Test
     void should_return_version_api() {

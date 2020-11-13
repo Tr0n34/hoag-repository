@@ -7,7 +7,12 @@ import fr.hoag.services.UsersServices;
 import fr.hoag.services.exceptions.BusinessServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import fr.hoag.repositories.UserRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UsersServicesImpl implements UsersServices {
@@ -18,13 +23,13 @@ public class UsersServicesImpl implements UsersServices {
     UserValidator userValidator;
 
     @Override
-    public void subscribe(User user) throws BusinessServiceException {
-
+    public User subscribe(User user) throws BusinessServiceException {
+        return null;
     }
 
     @Override
-    public void unsubscribe(User user) throws BusinessServiceException {
-
+    public boolean unsubscribe(User user) throws BusinessServiceException {
+        return true;
     }
 
     @Override
@@ -40,5 +45,30 @@ public class UsersServicesImpl implements UsersServices {
     @Override
     public User changeProfile(User user, Profile profile) throws BusinessServiceException {
         return null;
+    }
+
+    @Override
+    public User createUser(User user) throws BusinessServiceException {
+        return null;
+    }
+
+    @Override
+    public User updateUser(User oldUser, User newUser) throws BusinessServiceException {
+        return null;
+    }
+
+    @Override
+    public boolean deleteUser(User user) throws BusinessServiceException {
+        return false;
+    }
+
+    @Override
+    public User findById(Long id) throws BusinessServiceException {
+        return null;
+    }
+
+    @Override
+    public Page<User> findUser(Specification<User> userSpecification, Pageable pageable) throws BusinessServiceException {
+        return userRepository.findAll(userSpecification, pageable);
     }
 }

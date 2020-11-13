@@ -18,7 +18,7 @@ import java.io.IOException;
 @RequestMapping("configuration")
 public class ConfigurationController {
 
-    private static final Logger logger = LoggerFactory.getLogger(ConfigurationController.class);
+    public static final Logger logger = LoggerFactory.getLogger(ConfigurationController.class);
 
     @Autowired
     MavenXpp3Reader reader;
