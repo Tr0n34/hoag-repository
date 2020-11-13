@@ -12,7 +12,7 @@ public class UserDto implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq-generator")
-    @SequenceGenerator(name = "seq-generator", sequenceName = "ft000.seq-user", allocationSize=1)
+    @SequenceGenerator(name = "seq-generator", sequenceName = "ft000.seq-user", allocationSize = 1)
     private Long id;
     @Column(unique = true)
     private String login;
