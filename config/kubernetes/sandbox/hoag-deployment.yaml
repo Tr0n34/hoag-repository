@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hoag-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hoag-kubernetes-app
+  template:
+    metadata:
+      labels:
+        app: hoag-kubernetes-app
+    spec:
+      containers:
+        - name: hoag-container
+          imagePullPolicy: Always
+          image: library/hello-world:latest
+          ports:
+            - containerPort: 8080
+

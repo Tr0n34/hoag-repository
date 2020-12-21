@@ -1,0 +1,3 @@
+FROM openjdk:15-jre-alpine
+
+

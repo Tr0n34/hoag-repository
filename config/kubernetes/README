@@ -1,0 +1,9 @@
+Storage local : https://github.com/kubernetes-sigs/sig-storage-local-static-provisioner/blob/master/docs/getting-started.md
+Concepts Kubernetes : https://kubernetes.io/docs/concepts/
+kubernetes sur centOS : https://blog.zwindler.fr/2017/06/07/installer-cluster-kubernetes-vm-centos/
+
+HELM (package manager) doc : https://helm.sh/docs/intro/install/
+
+regarder si un container a une adresse IP ouverte ou non :
+* Handler
+* TCPSocketAction

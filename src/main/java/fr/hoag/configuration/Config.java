@@ -13,5 +13,4 @@ public class Config {
     @Value("${versions.api-user}")
     public String versionApiUser;
 
-
 }

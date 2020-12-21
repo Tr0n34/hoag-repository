@@ -18,7 +18,7 @@ import java.io.IOException;
 @RequestMapping("configuration")
 public class ConfigurationController {
 
-    private static final Logger logger = LoggerFactory.getLogger(ConfigurationController.class);
+    public static final Logger LOGGER = LoggerFactory.getLogger(ConfigurationController.class);
 
     @Autowired
     MavenXpp3Reader reader;
@@ -29,7 +29,7 @@ public class ConfigurationController {
     @GetMapping("/version-app")
     public String version() throws IOException, XmlPullParserException {
         Model model = reader.read(new FileReader("pom.xml"));
-        logger.debug("Maven Model : {}", model.toString());
+        LOGGER.debug("Maven Model : {}", model.toString());
         return model.getVersion();
     }
 
