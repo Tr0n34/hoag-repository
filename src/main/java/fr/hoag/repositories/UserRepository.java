@@ -1,6 +1,6 @@
 package fr.hoag.repositories;
 
-import fr.hoag.repositories.dto.UserDto;
+import fr.hoag.repositories.dto.users.UserDto;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

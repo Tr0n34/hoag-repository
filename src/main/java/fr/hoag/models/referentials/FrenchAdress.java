@@ -8,7 +8,6 @@ import fr.hoag.models.users.interfaces.Adress;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class FrenchAdress implements Adress {
 
-    @JsonProperty("feature[0].properties.street")
     private String numeroVoie;
 
     private String voie;

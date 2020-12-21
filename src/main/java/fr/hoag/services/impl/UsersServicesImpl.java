@@ -17,10 +17,12 @@ import java.util.List;
 @Service
 public class UsersServicesImpl implements UsersServices {
 
-    @Autowired
     UserRepository userRepository;
 
-    UserValidator userValidator;
+    @Autowired
+    public UsersServicesImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public User subscribe(User user) throws BusinessServiceException {

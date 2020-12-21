@@ -3,12 +3,13 @@ package fr.hoag.repositories;
 import fr.hoag.repositories.encryptions.EncryptionDataConverter;
 import fr.hoag.repositories.encryptions.HashDataConverter;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.ActiveProfiles;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@ActiveProfiles("integration")
+@ActiveProfiles("dev")
 public class DataConverterTest {
 
     @Test

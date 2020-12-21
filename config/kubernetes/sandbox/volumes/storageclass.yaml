@@ -1,0 +1,12 @@
+apiVerion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: standard
+provisioner: Local
+parameters:
+  type: gp2
+reclaimPoliciy: Retain
+allowVolumeExpansion: false
+mountOptions:
+  - debug
+volumeBindingMode: WaitForFirstConsumer
