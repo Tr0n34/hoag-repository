@@ -1,10 +1,10 @@
 package fr.hoag.repositories;
 
 import fr.hoag.repositories.dto.UserDto;
+import fr.hoag.repositories.types.PgInet;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.net.InetAddress;
 import java.util.List;
 
 @Repository
@@ -14,6 +14,6 @@ public interface UserRepository extends CrudRepository<UserDto, Integer> {
 
     List<UserDto> findByLogin(String login);
 
-    List<UserDto> findDistinctByIppAddr(InetAddress inetAddress);
+    List<UserDto> findDistinctByIpAddress(PgInet ipAddress);
 
 }

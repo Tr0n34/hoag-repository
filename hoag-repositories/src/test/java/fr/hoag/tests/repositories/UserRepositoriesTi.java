@@ -2,15 +2,18 @@ package fr.hoag.tests.repositories;
 
 import fr.hoag.repositories.UserRepository;
 import fr.hoag.repositories.dto.UserDto;
+import fr.hoag.repositories.types.PgInet;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ActiveProfiles;
 
-import java.net.InetAddress;
+import java.net.Inet4Address;
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 
 @SpringBootTest
 @ActiveProfiles("dev")
@@ -19,12 +22,24 @@ public class UserRepositoriesTi {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    ApplicationContext context;
+
     @Test
-    public void should() throws Exception {
-        UserDto user = UserDto.of(1, "test", "test", "test@test.com", Timestamp.from(Instant.now()), Timestamp.from(Instant.now()), InetAddress.getLocalHost());
-        userRepository.save(user);
-        UserDto savedUser = userRepository.findById(1);
+    public void should_create_new_user() throws Exception {
+        UserDto user = UserDto.create()
+                .login("test")
+                .password("test")
+                .email("test@test.com")
+                .ipAddress(PgInet.of(Inet4Address.getLocalHost()))
+                .createdOn(Timestamp.from(Instant.now().truncatedTo(ChronoUnit.SECONDS)))
+                .lastLogin(Timestamp.from(Instant.now().truncatedTo(ChronoUnit.SECONDS)))
+                .build();
+        int id = userRepository.save(user).getId();
+        UserDto savedUser = userRepository.findById(id);
+        Assertions.assertThat(savedUser).isNotNull();
         Assertions.assertThat(user).isEqualTo(savedUser);
+        userRepository.deleteAll();
     }
 
 }

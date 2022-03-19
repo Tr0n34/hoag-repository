@@ -20,6 +20,7 @@ public class SecureEncryption {
     private final static Logger logger = LoggerFactory.getLogger(SecureEncryption.class);
 
     private final static String ALGORITHM_NAME = "AES/GCM/NoPadding";
+    private final static String ALGORITHM_SHORTNAME = "AES";
     private final static int ALGORITHM_NONCE_SIZE = 12;
     private final static int ALGORITHM_TAG_SIZE = 128;
     private final static int ALGORITHM_KEY_SIZE = 128;
@@ -62,7 +63,7 @@ public class SecureEncryption {
         byte[] nonce = new byte[ALGORITHM_NONCE_SIZE];
         rand.nextBytes(nonce);
         Cipher cipher = Cipher.getInstance(ALGORITHM_NAME);
-        cipher.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(key, "AES"), new GCMParameterSpec(ALGORITHM_TAG_SIZE, nonce));
+        cipher.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(key, ALGORITHM_SHORTNAME), new GCMParameterSpec(ALGORITHM_TAG_SIZE, nonce));
         byte[] ciphertext = cipher.doFinal(plaintext);
         byte[] ciphertextAndNonce = new byte[nonce.length + ciphertext.length];
         System.arraycopy(nonce, 0, ciphertextAndNonce, 0, nonce.length);
@@ -78,7 +79,7 @@ public class SecureEncryption {
         System.arraycopy(ciphertextAndNonce, 0, nonce, 0, nonce.length);
         System.arraycopy(ciphertextAndNonce, nonce.length, ciphertext, 0, ciphertext.length);
         Cipher cipher = Cipher.getInstance(ALGORITHM_NAME);
-        cipher.init(Cipher.DECRYPT_MODE, new SecretKeySpec(key, "AES"), new GCMParameterSpec(ALGORITHM_TAG_SIZE, nonce));
+        cipher.init(Cipher.DECRYPT_MODE, new SecretKeySpec(key, ALGORITHM_SHORTNAME), new GCMParameterSpec(ALGORITHM_TAG_SIZE, nonce));
         return cipher.doFinal(ciphertext);
     }
 

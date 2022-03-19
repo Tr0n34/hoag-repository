@@ -14,7 +14,6 @@ public class DataConverterTest {
         EncryptionDataConverter converter = new EncryptionDataConverter();
         String password = "T#oT#o96";
         String encryptedPassword = converter.convertToDatabaseColumn(password);
-        System.out.println("E" + encryptedPassword);
         String decryptedPassword = converter.convertToEntityAttribute(encryptedPassword);
         assertThat(password).isEqualTo(decryptedPassword);
     }
