@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication(scanBasePackages = "fr.hoag")
-@EnableJpaRepositories(basePackages = {"fr.hoag.repositories"})
+@EnableJpaRepositories(basePackages = {"fr.hoag.repositories"}, enableDefaultTransactions = false)
 @EntityScan("fr.hoag.repositories.dto")
 public class AccessingRepositoriesApplication {
 

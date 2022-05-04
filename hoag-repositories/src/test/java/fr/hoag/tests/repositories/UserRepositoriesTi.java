@@ -3,20 +3,25 @@ package fr.hoag.tests.repositories;
 import fr.hoag.repositories.UserRepository;
 import fr.hoag.repositories.dto.UserDto;
 import fr.hoag.repositories.types.PgInet;
-import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.net.Inet4Address;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @SpringBootTest
-@ActiveProfiles("dev")
+@ActiveProfiles("staging")
 public class UserRepositoriesTi {
 
     @Autowired
@@ -25,8 +30,15 @@ public class UserRepositoriesTi {
     @Autowired
     ApplicationContext context;
 
+    @AfterEach
+    public void after() {
+        userRepository.deleteAll();
+    }
+
     @Test
-    public void should_create_new_user() throws Exception {
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Rollback(false)
+    public void should_save_user() throws Exception {
         UserDto user = UserDto.create()
                 .login("test")
                 .password("test")
@@ -37,9 +49,10 @@ public class UserRepositoriesTi {
                 .build();
         int id = userRepository.save(user).getId();
         UserDto savedUser = userRepository.findById(id);
-        Assertions.assertThat(savedUser).isNotNull();
-        Assertions.assertThat(user).isEqualTo(savedUser);
-        userRepository.deleteAll();
+        assertThat(savedUser).isNotNull();
+        assertThat(user).isEqualTo(savedUser);
     }
+
+
 
 }

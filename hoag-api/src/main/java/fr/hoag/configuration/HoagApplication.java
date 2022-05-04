@@ -1,4 +1,4 @@
-package fr.hoag;
+package fr.hoag.configuration;
 
 public class HoagApplication {
 }

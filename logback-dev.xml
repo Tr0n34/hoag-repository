@@ -30,11 +30,12 @@
         </rollingPolicy>
     </appender>
 
-    <root level="info">
+    <root level="error">
         <appender-ref ref="Console" />
     </root>
 
     <logger name="fr.hoag" level="TRACE" additivity="false">
+        <appender-ref ref="RollingFile" />
         <appender-ref ref="Console" />
     </logger>
 

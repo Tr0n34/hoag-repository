@@ -7,13 +7,29 @@ import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
+@Data
 @Table(
         name = "countries",
-        uniqueConstraints = {@UniqueConstraint(
-                name = "UK_COUNTRIES",
-                columnNames = {
-                        "alpha_2", "alpha_3", "country_code"
-                })
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        name = "UK_COUNTRY_CODE",
+                        columnNames = {
+                                "country_code"
+                        }
+                ),
+                @UniqueConstraint(
+                        name = "UK_ALPHA3",
+                        columnNames = {
+                                "alpha_3"
+                        }
+                )
+                ,
+                @UniqueConstraint(
+                        name = "UK_ALPHA2",
+                        columnNames = {
+                                "alpha_2"
+                        }
+                )
         }
 )
 @Getter
@@ -36,7 +52,7 @@ public class CountryDto {
     @Column(name = "alpha_3", length = 3)
     @JsonProperty("alpha-3")
     private String alpha3;
-    @Column(name = "country_code", length = 3)
+    @Column(name = "country_code", length = 2)
     @JsonProperty("country-code")
     private String countryCode;
     @Column(length = 63)
