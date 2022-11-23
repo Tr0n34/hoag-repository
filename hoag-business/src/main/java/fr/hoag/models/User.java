@@ -10,7 +10,7 @@ import java.util.Collection;
 @Getter
 @Builder(builderMethodName = "create")
 @ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(of = "username")
 @NoArgsConstructor
 @AllArgsConstructor(staticName = "of")
 public class User implements UserDetails {

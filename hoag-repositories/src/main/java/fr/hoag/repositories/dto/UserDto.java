@@ -13,7 +13,17 @@ import java.sql.Timestamp;
 
 @Entity
 @Data
-@Table(name = "users")
+@Table(
+        name = "users",
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        name = "UK_USERNAME",
+                        columnNames = {
+                                "login"
+                        }
+                )
+        }
+)
 @Getter
 @Setter(AccessLevel.PUBLIC)
 @Builder(builderMethodName = "create")

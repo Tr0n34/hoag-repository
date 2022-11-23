@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class SubscriptionServicesImpl implements SubscriptionServices {
 
+    @Autowired
+
 
     @Override
     public User subscribe(String username, String password, String email) {
@@ -16,4 +18,5 @@ public class SubscriptionServicesImpl implements SubscriptionServices {
     public boolean unsubscribe(String username, String password) {
         return false;
     }
+
 }

@@ -2,6 +2,7 @@ package fr.hoag.repositories.encryptions;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,8 +15,12 @@ public class EncryptionDataConverter implements AttributeConverter<String, Strin
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EncryptionDataConverter.class);
 
-    @Value("${hoag.encryption.password}")
     private String encryptPassword;
+
+    @Autowired
+    public EncryptionDataConverter(@Value("${hoag.encryption.password}") String encryptPassword) {
+        this.encryptPassword = encryptPassword;
+    }
 
     @Override
     public String convertToDatabaseColumn(String data) {

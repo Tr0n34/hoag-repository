@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Profile;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Propagation;
@@ -36,8 +37,6 @@ public class UserRepositoriesTi {
     }
 
     @Test
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
-    @Rollback(false)
     public void should_save_user() throws Exception {
         UserDto user = UserDto.create()
                 .login("test")

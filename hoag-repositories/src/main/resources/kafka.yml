@@ -1,0 +1,19 @@
+server:
+  address: 'localhost'
+  port: 9092
+
+topics:
+  - topic:
+      name: 'topic1'
+      replicatas: 1
+      partitions:
+        number: 10
+      config:
+        compression_type: 'zstd'
+  - topic:
+      name: 'topic2'
+      replicatas: 2
+      partitions:
+        number: 2
+      config:
+        compression_type: 'zstd'
